@@ -40,6 +40,7 @@ class ConsignmentAdapter
             ->baseOptions()
             ->extraOptions()
             ->recipient()
+            ->generalSettings()
             ->pickup();
     }
 
@@ -143,6 +144,28 @@ class ConsignmentAdapter
             'number'        => null,
             'number_suffix' => '',
 
+        ];
+        /** @noinspection PhpInternalEntityUsedInspection */
+        $this->clearFields($fields);
+
+        $methods = [
+            'Company'      => 'company',
+            'Number'       => 'number',
+            'NumberSuffix' => 'number_suffix',
+        ];
+        /** @noinspection PhpInternalEntityUsedInspection */
+        $this->setByMethods($this->data['recipient'], $methods);
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    private function generalSettings()
+    {
+        $fields = [
+            'disable_auto_detect_pickup'       => false,
         ];
         /** @noinspection PhpInternalEntityUsedInspection */
         $this->clearFields($fields);
