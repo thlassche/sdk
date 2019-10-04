@@ -1,26 +1,17 @@
 <?php declare(strict_types=1);
 
-/**
- * If you want to add improvements, please create a fork in our GitHub:
- * https://github.com/myparcelnl
- *
- * @author      Richard Perdaan <richard@myparcel.nl>
- * @copyright   2010-2017 MyParcel
- * @license     http://creativecommons.org/licenses/by-nc-nd/3.0/nl/deed.en_US  CC BY-NC-ND 3.0 NL
- * @link        https://github.com/myparcelnl/sdk
- * @since       File available since Release v0.1.0
- */
+namespace MyParcelNL\Sdk\tests\GetConsignments;
 
-namespace MyParcelNL\Sdk\tests\GetConsignments\FindManyConsignmentTest;
-
+use Exception;
 use MyParcelNL\Sdk\src\Helper\MyParcelCollection;
 use MyParcelNL\Sdk\src\Model\MyParcelConsignment;
+use PHPUnit\Framework\TestCase;
 
-class FindManyConsignmentTest extends \PHPUnit\Framework\TestCase
+class FindManyConsignmentTest extends TestCase
 {
     /**
      * @return void
-     * @throws \Exception
+     * @throws Exception
      */
     public function testFindManyConsignment(): void
     {
@@ -45,8 +36,8 @@ class FindManyConsignmentTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @param \MyParcelNL\Sdk\src\Helper\MyParcelCollection|MyParcelConsignment[] $collection
-     * @param int[] $consignmentIds
+     * @param MyParcelCollection|MyParcelConsignment[] $collection
+     * @param int[]                                    $consignmentIds
      */
     public function checkCollection(MyParcelCollection $collection, array $consignmentIds): void
     {

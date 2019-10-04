@@ -1,25 +1,16 @@
 <?php declare(strict_types=1);
 
-/**
- * If you want to add improvements, please create a fork in our GitHub:
- * https://github.com/myparcelnl
- *
- * @author      Richard Perdaan <richard@myparcel.nl>
- * @copyright   2010-2017 MyParcel
- * @license     http://creativecommons.org/licenses/by-nc-nd/3.0/nl/deed.en_US  CC BY-NC-ND 3.0 NL
- * @link        https://github.com/myparcelnl/sdk
- * @since       File available since Release v0.1.0
- */
+namespace MyParcelNL\Sdk\tests\GetConsignments;
 
-namespace MyParcelNL\Sdk\tests\GetConsignments\FindConsignmentTest;
-
+use Exception;
 use MyParcelNL\Sdk\src\Helper\MyParcelCollection;
+use PHPUnit\Framework\TestCase;
 
-class FindConsignmentTest extends \PHPUnit\Framework\TestCase
+class FindConsignmentTest extends TestCase
 {
     /**
      * @return void
-     * @throws \Exception
+     * @throws Exception
      */
     public function testFindConsignment(): void
     {

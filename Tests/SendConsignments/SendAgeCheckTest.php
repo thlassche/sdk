@@ -1,36 +1,29 @@
 <?php declare(strict_types=1);
 
-/**
- * If you want to add improvements, please create a fork in our GitHub:
- * https://github.com/myparcelnl
- *
- * @author      Reindert Vetter <reindert@myparcel.nl>
- * @copyright   2010-2017 MyParcel
- * @license     http://creativecommons.org/licenses/by-nc-nd/3.0/nl/deed.en_US  CC BY-NC-ND 3.0 NL
- * @link        https://github.com/myparcelnl/sdk
- * @since       File available since Release v0.1.0
- */
+namespace MyParcelNL\Sdk\tests\SendConsignments;
 
-namespace MyParcelNL\Sdk\tests\SendConsignments\SendAgeCheckTest;
-
+use Exception;
+use MyParcelNL\Sdk\src\Exception\ApiException;
+use MyParcelNL\Sdk\src\Exception\MissingFieldException;
 use MyParcelNL\Sdk\src\Factory\ConsignmentFactory;
 use MyParcelNL\Sdk\src\Helper\MyParcelCollection;
 use MyParcelNL\Sdk\src\Model\Consignment\PostNLConsignment;
 use MyParcelNL\Sdk\src\Model\Consignment\AbstractConsignment;
-
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SendAgeCheckTest
- * @package MyParcelNL\Sdk\tests\SendAgeCheckTest
+ *
+ * @package MyParcelNL\Sdk\tests\SendConsignments
  */
-class SendAgeCheckTest extends \PHPUnit\Framework\TestCase
+class SendAgeCheckTest extends TestCase
 {
 
     /**
      * @return $this
-     * @throws \MyParcelNL\Sdk\src\Exception\ApiException
-     * @throws \MyParcelNL\Sdk\src\Exception\MissingFieldException
-     * @throws \Exception
+     * @throws ApiException
+     * @throws MissingFieldException
+     * @throws Exception
      */
     public function testSendOneConsignment()
     {
@@ -128,7 +121,7 @@ class SendAgeCheckTest extends \PHPUnit\Framework\TestCase
     public function additionProvider()
     {
         return [
-            'Normal check'          => [
+            'Normal check'           => [
                 'api_key'           => getenv('API_KEY'),
                 'carrier_id'        => PostNLConsignment::CARRIER_ID,
                 'cc'                => 'NL',
@@ -194,7 +187,7 @@ class SendAgeCheckTest extends \PHPUnit\Framework\TestCase
                 'signature'            => true,
                 'label_description'    => '18+ check no signature',
             ],
-            '18+ check EU shipment' => [
+            '18+ check EU shipment'  => [
                 'api_key'           => getenv('API_KEY'),
                 'carrier_id'        => PostNLConsignment::CARRIER_ID,
                 'cc'                => 'BE',

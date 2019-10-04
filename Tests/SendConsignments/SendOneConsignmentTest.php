@@ -1,37 +1,28 @@
 <?php declare(strict_types=1);
 
-/**
- * If you want to add improvements, please create a fork in our GitHub:
- * https://github.com/myparcelnl
- *
- * @author      Reindert Vetter <reindert@myparcel.nl>
- * @copyright   2010-2017 MyParcel
- * @license     http://creativecommons.org/licenses/by-nc-nd/3.0/nl/deed.en_US  CC BY-NC-ND 3.0 NL
- * @link        https://github.com/myparcelnl/sdk
- * @since       File available since Release v0.1.0
- */
+namespace MyParcelNL\Sdk\tests\SendConsignments;
 
-namespace MyParcelNL\Sdk\tests\SendConsignments\SendOneConsignmentTest;
-
+use MyParcelNL\Sdk\src\Exception\ApiException;
+use MyParcelNL\Sdk\src\Exception\MissingFieldException;
 use MyParcelNL\Sdk\src\Factory\ConsignmentFactory;
 use MyParcelNL\Sdk\src\Helper\MyParcelCollection;
 use MyParcelNL\Sdk\src\Model\Consignment\AbstractConsignment;
 use MyParcelNL\Sdk\src\Model\Consignment\BpostConsignment;
 use MyParcelNL\Sdk\src\Model\Consignment\DPDConsignment;
 use MyParcelNL\Sdk\src\Model\Consignment\PostNLConsignment;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SendOneConsignmentTest
- * @package MyParcelNL\Sdk\tests\SendOneConsignmentTest
+ *
+ * @package MyParcelNL\Sdk\tests\SendConsignments
  */
-class SendOneConsignmentTest extends \PHPUnit\Framework\TestCase
+class SendOneConsignmentTest extends TestCase
 {
-
     /**
-     * @return \MyParcelNL\Sdk\tests\SendConsignments\SendOneConsignmentTest\SendOneConsignmentTest
-     * @throws \MyParcelNL\Sdk\src\Exception\ApiException
-     * @throws \MyParcelNL\Sdk\src\Exception\MissingFieldException
-     * @throws \Exception
+     * @return $this
+     * @throws ApiException
+     * @throws MissingFieldException
      */
     public function testSendOneConsignment()
     {

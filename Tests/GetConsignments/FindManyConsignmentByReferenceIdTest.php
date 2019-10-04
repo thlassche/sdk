@@ -1,22 +1,12 @@
 <?php declare(strict_types=1);
 
-/**
- * If you want to add improvements, please create a fork in our GitHub:
- * https://github.com/myparcelnl
- *
- * @author      Richard Perdaan <richard@myparcel.nl>
- * @copyright   2010-2017 MyParcel
- * @license     http://creativecommons.org/licenses/by-nc-nd/3.0/nl/deed.en_US  CC BY-NC-ND 3.0 NL
- * @link        https://github.com/myparcelnl/sdk
- * @since       File available since Release v0.1.0
- */
-
-namespace MyParcelNL\Sdk\tests\GetConsignments\FindManyConsignmentByReferenceIdTest;
+namespace MyParcelNL\Sdk\tests\GetConsignments;
 
 use MyParcelNL\Sdk\src\Helper\MyParcelCollection;
 use MyParcelNL\Sdk\src\Model\MyParcelConsignment;
+use PHPUnit\Framework\TestCase;
 
-class FindManyConsignmentByReferenceIdTest extends \PHPUnit\Framework\TestCase
+class FindManyConsignmentByReferenceIdTest extends TestCase
 {
     /**
      * @return void
@@ -43,8 +33,8 @@ class FindManyConsignmentByReferenceIdTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @param \MyParcelNL\Sdk\src\Helper\MyParcelCollection|MyParcelConsignment[] $collection
-     * @param int[] $referenceId
+     * @param MyParcelCollection|MyParcelConsignment[] $collection
+     * @param int[]                                    $referenceId
      */
     public function checkCollection(MyParcelCollection $collection, array $referenceId): void
     {

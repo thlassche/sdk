@@ -1,24 +1,26 @@
 <?php declare(strict_types=1);
 
-namespace MyParcelNL\Sdk\tests\SendConsignments\SendDigitalStampTest;
+namespace MyParcelNL\Sdk\tests\SendConsignments;
 
+use Exception;
 use MyParcelNL\Sdk\src\Helper\MyParcelCollection;
 use MyParcelNL\Sdk\src\Concerns\HasDebugLabels;
 use MyParcelNL\Sdk\src\Factory\ConsignmentFactory;
 use MyParcelNL\Sdk\src\Model\Consignment\AbstractConsignment;
 use MyParcelNL\Sdk\src\Model\Consignment\PostNLConsignment;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SendDigitalStampTest
  * @package MyParcelNL\Sdk\tests\SendDigitalStampTest
  */
-class SendDigitalStampTest extends \PHPUnit\Framework\TestCase
+class SendDigitalStampTest extends TestCase
 {
     use HasDebugLabels;
 
     /**
      * Test one shipment with createConcepts()
-     * @throws \Exception
+     * @throws Exception
      *
      * @return void
      */

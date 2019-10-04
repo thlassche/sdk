@@ -1,38 +1,28 @@
 <?php declare(strict_types=1);
 
-/**
- * Create international consignment
- *
- * If you want to add improvements, please create a fork in our GitHub:
- * https://github.com/myparcelnl
- *
- * @author      Reindert Vetter <reindert@myparcel.nl>
- * @copyright   2010-2017 MyParcel
- * @license     http://creativecommons.org/licenses/by-nc-nd/3.0/nl/deed.en_US  CC BY-NC-ND 3.0 NL
- * @link        https://github.com/myparcelnl/sdk
- * @since       File available since Release v0.1.0
- */
+namespace MyParcelNL\Sdk\tests\SendConsignments;
 
-namespace MyParcelNL\Sdk\tests\SendConsignments\SendOneInternationalConsignmentTest;
-
+use Exception;
 use MyParcelNL\Sdk\src\Factory\ConsignmentFactory;
 use MyParcelNL\Sdk\src\Helper\MyParcelCollection;
 use MyParcelNL\Sdk\src\Model\Consignment\AbstractConsignment;
 use MyParcelNL\Sdk\src\Model\Consignment\PostNLConsignment;
 use MyParcelNL\Sdk\src\Model\MyParcelCustomsItem;
 use MyParcelNL\Sdk\src\Concerns\HasDebugLabels;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SendOneInternationalConsignmentTest
- * @package MyParcelNL\Sdk\tests\SendOneConsignmentTest
+ *
+ * @package MyParcelNL\Sdk\tests\SendConsignments
  */
-class SendOneInternationalConsignmentTest extends \PHPUnit\Framework\TestCase
+class SendOneInternationalConsignmentTest extends TestCase
 {
     use HasDebugLabels;
 
     /**
      * Test one shipment with createConcepts()
-     * @throws \Exception
+     * @throws Exception
      */
     public function testSendOneConsignment()
     {

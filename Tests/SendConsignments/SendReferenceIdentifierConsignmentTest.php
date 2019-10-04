@@ -1,36 +1,26 @@
 <?php declare(strict_types=1);
 
-/**
- * Create one concept
- *
- * If you want to add improvements, please create a fork in our GitHub:
- * https://github.com/myparcelnl
- *
- * @author      Reindert Vetter <reindert@myparcel.nl>
- * @copyright   2010-2017 MyParcel
- * @license     http://creativecommons.org/licenses/by-nc-nd/3.0/nl/deed.en_US  CC BY-NC-ND 3.0 NL
- * @link        https://github.com/myparcelnl/sdk
- * @since       File available since Release v0.1.0
- */
+namespace MyParcelNL\Sdk\tests\SendConsignments;
 
-namespace MyParcelNL\Sdk\tests\SendConsignments\SendReferenceIdentifierConsignmentTest;
-
+use DateTime;
+use Exception;
 use MyParcelNL\Sdk\src\Factory\ConsignmentFactory;
 use MyParcelNL\Sdk\src\Helper\MyParcelCollection;
 use MyParcelNL\Sdk\src\Model\Consignment\AbstractConsignment;
 use MyParcelNL\Sdk\src\Model\Consignment\PostNLConsignment;
-
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class SendReferenceIdentifierConsignmentTest
- * @package MyParcelNL\Sdk\tests\SendOneConsignmentTest
+ *
+ * @package MyParcelNL\Sdk\tests\SendConsignments
  */
-class SendReferenceIdentifierConsignmentTest extends \PHPUnit\Framework\TestCase
+class SendReferenceIdentifierConsignmentTest extends TestCase
 {
 
     /**
      * Test one shipment with createConcepts()
-     * @throws \Exception
+     * @throws Exception
      */
     public function testSendOneConsignment()
     {
@@ -160,7 +150,7 @@ class SendReferenceIdentifierConsignmentTest extends \PHPUnit\Framework\TestCase
      * Data for the test
      *
      * @return array
-     * @throws \Exception
+     * @throws Exception
      */
     public function additionProvider()
     {
@@ -168,7 +158,7 @@ class SendReferenceIdentifierConsignmentTest extends \PHPUnit\Framework\TestCase
             [
                 'api_key'              => getenv('API_KEY'),
                 'carrier_id'           => PostNLConsignment::CARRIER_ID,
-                'reference_identifier' => 'prefix_' . (string) (new \DateTime())->getTimestamp(),
+                'reference_identifier' => 'prefix_' . (string) (new DateTime())->getTimestamp(),
                 'cc'                   => 'NL',
                 'person'               => 'Reindert',
                 'company'              => 'Big Sale BV',

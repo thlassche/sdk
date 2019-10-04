@@ -1,36 +1,26 @@
 <?php declare(strict_types=1);
 
-/**
- * Create one concept
- *
- * If you want to add improvements, please create a fork in our GitHub:
- * https://github.com/myparcelnl
- *
- * @author      Reindert Vetter <reindert@myparcel.nl>
- * @copyright   2010-2017 MyParcel
- * @license     http://creativecommons.org/licenses/by-nc-nd/3.0/nl/deed.en_US  CC BY-NC-ND 3.0 NL
- * @link        https://github.com/myparcelnl/sdk
- * @since       File available since Release v0.1.0
- */
+namespace MyParcelNL\Sdk\tests\SendConsignments;
 
-namespace MyParcelNL\Sdk\src\tests\SendConsignments;
-
+use MyParcelNL\Sdk\src\Exception\ApiException;
+use MyParcelNL\Sdk\src\Exception\MissingFieldException;
 use MyParcelNL\Sdk\src\Factory\ConsignmentFactory;
 use MyParcelNL\Sdk\src\Helper\MyParcelCollection;
 use MyParcelNL\Sdk\src\Model\Consignment\AbstractConsignment;
 use MyParcelNL\Sdk\src\Model\Consignment\PostNLConsignment;
+use PHPUnit\Framework\TestCase;
 
 /**
- * Class SendPickupFromCheckoutDataTest
+ * Class SendUserAgentTest
+ *
+ * @package MyParcelNL\Sdk\src\tests\SendConsignments
  */
-class SendUserAgentTest extends \PHPUnit\Framework\TestCase
+class SendUserAgentTest extends TestCase
 {
     /**
-     * Test one shipment with createConcepts()
-     * @return \MyParcelNL\Sdk\src\tests\SendConsignments\SendUserAgentTest
-     * @throws \MyParcelNL\Sdk\src\Exception\ApiException
-     * @throws \MyParcelNL\Sdk\src\Exception\MissingFieldException
-     * @throws \Exception
+     * @return $this
+     * @throws ApiException
+     * @throws MissingFieldException
      */
     public function testSendOneConsignment()
     {
@@ -41,18 +31,16 @@ class SendUserAgentTest extends \PHPUnit\Framework\TestCase
         }
 
         foreach ($this->additionProvider() as $consignmentTest) {
-
             $myParcelCollection = new MyParcelCollection();
-            $consignment        = (ConsignmentFactory::createByCarrierId($consignmentTest['carrier_id']))
-                ->setApiKey($consignmentTest['api_key'])
-                ->setCountry($consignmentTest['cc'])
-                ->setPerson($consignmentTest['person'])
-                ->setCompany($consignmentTest['company'])
-                ->setFullStreet($consignmentTest['full_street_input'])
-                ->setPostalCode($consignmentTest['postal_code'])
-                ->setCity($consignmentTest['city'])
-                ->setEmail('your_email@test.nl')
-                ->setPhone($consignmentTest['phone']);
+            $consignment        = (ConsignmentFactory::createByCarrierId($consignmentTest['carrier_id']))->setApiKey(
+                $consignmentTest['api_key']
+            )->setCountry($consignmentTest['cc'])->setPerson($consignmentTest['person'])->setCompany(
+                $consignmentTest['company']
+            )->setFullStreet($consignmentTest['full_street_input'])->setPostalCode(
+                $consignmentTest['postal_code']
+            )->setCity($consignmentTest['city'])->setEmail('your_email@test.nl')->setPhone(
+                $consignmentTest['phone']
+            );
 
             if (key_exists('checkout_data', $consignmentTest)) {
                 $consignment->setPickupAddressFromCheckout($consignmentTest['checkout_data']);
@@ -123,7 +111,10 @@ class SendUserAgentTest extends \PHPUnit\Framework\TestCase
             }
 
             if (key_exists('user_agent', $consignmentTest)) {
-                $myParcelCollection->setUserAgent($consignmentTest['user_agent']['platform'], $consignmentTest['user_agent']['version']);
+                $myParcelCollection->setUserAgent(
+                    $consignmentTest['user_agent']['platform'],
+                    $consignmentTest['user_agent']['version']
+                );
             }
 
             $myParcelCollection->addConsignment($consignment);
@@ -140,13 +131,21 @@ class SendUserAgentTest extends \PHPUnit\Framework\TestCase
             $this->assertEquals($consignmentTest['company'], $consignment->getCompany(), 'getCompany()');
             $this->assertEquals($consignmentTest['full_street'], $consignment->getFullStreet(), 'getFullStreet()');
             $this->assertEquals($consignmentTest['number'], $consignment->getNumber(), 'getNumber()');
-            $this->assertEquals($consignmentTest['number_suffix'], $consignment->getNumberSuffix(), 'getNumberSuffix()');
+            $this->assertEquals(
+                $consignmentTest['number_suffix'],
+                $consignment->getNumberSuffix(),
+                'getNumberSuffix()'
+            );
             $this->assertEquals($consignmentTest['postal_code'], $consignment->getPostalCode(), 'getPostalCode()');
             $this->assertEquals($consignmentTest['city'], $consignment->getCity(), 'getCity()');
             $this->assertEquals($consignmentTest['phone'], $consignment->getPhone(), 'getPhone()');
 
             if (key_exists('package_type', $consignmentTest)) {
-                $this->assertEquals($consignmentTest['package_type'], $consignment->getPackageType(), 'getPackageType()');
+                $this->assertEquals(
+                    $consignmentTest['package_type'],
+                    $consignment->getPackageType(),
+                    'getPackageType()'
+                );
             }
 
             if (key_exists('large_format', $consignmentTest)) {
@@ -158,7 +157,11 @@ class SendUserAgentTest extends \PHPUnit\Framework\TestCase
             }
 
             if (key_exists('only_recipient', $consignmentTest)) {
-                $this->assertEquals($consignmentTest['only_recipient'], $consignment->isOnlyRecipient(), 'isOnlyRecipient()');
+                $this->assertEquals(
+                    $consignmentTest['only_recipient'],
+                    $consignment->isOnlyRecipient(),
+                    'isOnlyRecipient()'
+                );
             }
 
             if (key_exists('signature', $consignmentTest)) {
@@ -170,7 +173,11 @@ class SendUserAgentTest extends \PHPUnit\Framework\TestCase
             }
 
             if (key_exists('label_description', $consignmentTest)) {
-                $this->assertEquals($consignmentTest['label_description'], $consignment->getLabelDescription(), 'getLabelDescription()');
+                $this->assertEquals(
+                    $consignmentTest['label_description'],
+                    $consignment->getLabelDescription(),
+                    'getLabelDescription()'
+                );
             }
 
             if (key_exists('insurance', $consignmentTest)) {
@@ -178,48 +185,83 @@ class SendUserAgentTest extends \PHPUnit\Framework\TestCase
             }
 
             if (key_exists('delivery_type', $consignmentTest)) {
-                $this->assertEquals($consignmentTest['delivery_type'], $consignment->getDeliveryType(), 'getDeliveryType()');
+                $this->assertEquals(
+                    $consignmentTest['delivery_type'],
+                    $consignment->getDeliveryType(),
+                    'getDeliveryType()'
+                );
             }
 
-            if (! empty($consignmentTest['delivery_date'])) {
-                $this->assertEquals($consignmentTest['delivery_date'], $consignment->getDeliveryDate(), 'getDeliveryDate()');
+            if (!empty($consignmentTest['delivery_date'])) {
+                $this->assertEquals(
+                    $consignmentTest['delivery_date'],
+                    $consignment->getDeliveryDate(),
+                    'getDeliveryDate()'
+                );
             }
 
-            if (! empty($consignmentTest['pickup_postal_code'])) {
-                $this->assertEquals($consignmentTest['pickup_postal_code'], $consignment->getPickupPostalCode(), 'getPickupPostalCode()');
+            if (!empty($consignmentTest['pickup_postal_code'])) {
+                $this->assertEquals(
+                    $consignmentTest['pickup_postal_code'],
+                    $consignment->getPickupPostalCode(),
+                    'getPickupPostalCode()'
+                );
             }
 
-            if (! empty($consignmentTest['pickup_street'])) {
-                $this->assertEquals($consignmentTest['pickup_street'], $consignment->getPickupStreet(), 'getPickupStreet()');
+            if (!empty($consignmentTest['pickup_street'])) {
+                $this->assertEquals(
+                    $consignmentTest['pickup_street'],
+                    $consignment->getPickupStreet(),
+                    'getPickupStreet()'
+                );
             }
 
-            if (! empty($consignmentTest['pickup_city'])) {
+            if (!empty($consignmentTest['pickup_city'])) {
                 $this->assertEquals($consignmentTest['pickup_city'], $consignment->getPickupCity(), 'getPickupCity()');
             }
 
-            if (! empty($consignmentTest['pickup_number'])) {
-                $this->assertEquals($consignmentTest['pickup_number'], $consignment->getPickupNumber(), 'getPickupNumber()');
+            if (!empty($consignmentTest['pickup_number'])) {
+                $this->assertEquals(
+                    $consignmentTest['pickup_number'],
+                    $consignment->getPickupNumber(),
+                    'getPickupNumber()'
+                );
             }
 
-            if (! empty($consignmentTest['pickup_location_name'])) {
-                $this->assertEquals($consignmentTest['pickup_location_name'], $consignment->getPickupLocationName(), 'getPickupLocationName()');
+            if (!empty($consignmentTest['pickup_location_name'])) {
+                $this->assertEquals(
+                    $consignmentTest['pickup_location_name'],
+                    $consignment->getPickupLocationName(),
+                    'getPickupLocationName()'
+                );
             }
 
-            if (! empty($consignmentTest['pickup_location_code'])) {
-                $this->assertEquals($consignmentTest['pickup_location_code'], $consignment->getPickupLocationCode(), 'getPickupLocationCode()');
+            if (!empty($consignmentTest['pickup_location_code'])) {
+                $this->assertEquals(
+                    $consignmentTest['pickup_location_code'],
+                    $consignment->getPickupLocationCode(),
+                    'getPickupLocationCode()'
+                );
             }
 
-            if (! empty($consignmentTest['pickup_network_id'])) {
-                $this->assertEquals($consignmentTest['pickup_network_id'], $consignment->getPickupNetworkId(), 'getPickupNetworkId()');
+            if (!empty($consignmentTest['pickup_network_id'])) {
+                $this->assertEquals(
+                    $consignmentTest['pickup_network_id'],
+                    $consignment->getPickupNetworkId(),
+                    'getPickupNetworkId()'
+                );
             }
 
             /**
              * Get label
              */
-            $myParcelCollection
-                ->setLinkOfLabels();
+            $myParcelCollection->setLinkOfLabels();
 
-            $this->assertEquals(true, preg_match("#^https://api.myparcel.nl/pdfs#", $myParcelCollection->getLinkOfLabels()), 'Can\'t get link of PDF');
+            $this->assertEquals(
+                true,
+                preg_match("#^https://api.myparcel.nl/pdfs#", $myParcelCollection->getLinkOfLabels()),
+                'Can\'t get link of PDF'
+            );
 
             /** @var AbstractConsignment $consignment */
             $consignment = $myParcelCollection->getOneConsignment();
@@ -267,12 +309,14 @@ class SendUserAgentTest extends \PHPUnit\Framework\TestCase
                 'phone'             => '123-45-235-435',
                 'package_type'      => AbstractConsignment::PACKAGE_TYPE_PACKAGE,
                 'label_description' => 'Label description',
-                'checkout_data'     => '{"date":"'.date('Y-m-d', strtotime("+1 day")).'","time":[{"start":"16:00:00","type":4,"price":{"amount":0,"currency":"EUR"}}],"location":"The Read Shop","street":"Anjelierenstraat","number":"43","postal_code":"2231GT","city":"Rijnsburg","start_time":"16:00:00","price":0,"price_comment":"retail","comment":"Dit is een Postkantoor. Post en pakketten die u op werkdagen vóór de lichtingstijd afgeeft, bezorgen we binnen Nederland de volgende dag.","phone_number":"071-4023063","opening_hours":{"monday":["08:00-18:00"],"tuesday":["08:00-18:00"],"wednesday":["08:00-18:00"],"thursday":["08:00-18:00"],"friday":["08:00-19:00"],"saturday":["08:00-18:00"],"sunday":[]},"distance":"253","location_code":"163463","options":{"signature":false,"only_recipient":false}}',
+                'checkout_data'     => '{"date":"'
+                    . date('Y-m-d', strtotime("+1 day"))
+                    . '","time":[{"start":"16:00:00","type":4,"price":{"amount":0,"currency":"EUR"}}],"location":"The Read Shop","street":"Anjelierenstraat","number":"43","postal_code":"2231GT","city":"Rijnsburg","start_time":"16:00:00","price":0,"price_comment":"retail","comment":"Dit is een Postkantoor. Post en pakketten die u op werkdagen vóór de lichtingstijd afgeeft, bezorgen we binnen Nederland de volgende dag.","phone_number":"071-4023063","opening_hours":{"monday":["08:00-18:00"],"tuesday":["08:00-18:00"],"wednesday":["08:00-18:00"],"thursday":["08:00-18:00"],"friday":["08:00-19:00"],"saturday":["08:00-18:00"],"sunday":[]},"distance":"253","location_code":"163463","options":{"signature":false,"only_recipient":false}}',
                 'user_agent'        => [
                     'platform' => 'SDK_UNIT_TEST',
                     'version'  => 'v1.2.0',
                 ],
-            ]
+            ],
         ];
     }
 }

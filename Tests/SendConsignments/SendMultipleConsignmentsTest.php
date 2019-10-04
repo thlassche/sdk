@@ -27,7 +27,6 @@ use MyParcelNL\Sdk\src\Model\MyParcelRequest;
  */
 class SendMultipleConsignmentsTest extends \PHPUnit\Framework\TestCase
 {
-
     /**
      * Create multiple shipments with createConcepts()
      * @throws \Exception

@@ -1,33 +1,21 @@
 <?php declare(strict_types=1);
-/**
- * A test to send a return email
- *
- * LICENSE: This source file is subject to the Creative Commons License.
- * It is available through the world-wide-web at this URL:
- * http://creativecommons.org/licenses/by-nc-nd/3.0/nl/deed.en_US
- *
- * If you want to add improvements, please create a fork in our GitHub:
- * https://github.com/myparcelnl/magento
- *
- * @author      Reindert Vetter <reindert@myparcel.nl>
- * @copyright   2010-2017 MyParcel
- * @license     http://creativecommons.org/licenses/by-nc-nd/3.0/nl/deed.en_US  CC BY-NC-ND 3.0 NL
- * @link        https://github.com/myparcelnl/magento
- * @since       File available since Release 2.0.0
- */
 
-namespace MyParcelNL\Sdk\Tests\ReturnLabelTest;
+namespace MyParcelNL\Sdk\tests\ReturnLabelTest;
 
+use Exception;
+use MyParcelNL\Sdk\src\Exception\ApiException;
+use MyParcelNL\Sdk\src\Exception\MissingFieldException;
 use MyParcelNL\Sdk\src\Factory\ConsignmentFactory;
 use MyParcelNL\Sdk\src\Helper\MyParcelCollection;
 use MyParcelNL\Sdk\src\Model\Consignment\PostNLConsignment;
+use PHPUnit\Framework\TestCase;
 
-class SendReturnLabelMailTest extends \PHPUnit\Framework\TestCase
+class SendReturnLabelMailTest extends TestCase
 {
     /**
      * @return $this
-     * @throws \MyParcelNL\Sdk\src\Exception\ApiException
-     * @throws \MyParcelNL\Sdk\src\Exception\MissingFieldException
+     * @throws ApiException
+     * @throws MissingFieldException
      */
     public function testSendReturnLabelMail()
     {
@@ -44,8 +32,8 @@ class SendReturnLabelMailTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @return MyParcelCollection
-     * @throws \MyParcelNL\Sdk\src\Exception\MissingFieldException
-     * @throws \Exception
+     * @throws MissingFieldException
+     * @throws Exception
      */
     private function getCollectionWithParentConsignment()
     {
