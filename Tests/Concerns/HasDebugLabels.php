@@ -1,7 +1,4 @@
 <?php declare(strict_types=1);
-/**
- * @author Richard Perdaan <support@myparcel.nl>
- */
 
 namespace MyParcelNL\Sdk\src\Concerns;
 
