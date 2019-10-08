@@ -1,19 +1,19 @@
 <?php declare(strict_types=1);
 
-namespace MyParcelNL\Sdk\tests\SendConsignments;
+namespace MyParcelNL\Sdk\Tests\Unit\SendConsignments;
 
 use Exception;
 use MyParcelNL\Sdk\src\Exception\MissingFieldException;
 use MyParcelNL\Sdk\src\Factory\ConsignmentFactory;
 use MyParcelNL\Sdk\src\Helper\MyParcelCollection;
 use MyParcelNL\Sdk\src\Model\Consignment\AbstractConsignment;
-use MyParcelNL\Sdk\src\Concerns\HasDebugLabels;
+use MyParcelNL\Sdk\Tests\Concerns\HasDebugLabels;
 use MyParcelNL\Sdk\src\Model\Consignment\PostNLConsignment;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class SendMorningShipmentTest
- * @package MyParcelNL\Sdk\tests\SendOneConsignmentTest
+ * @package MyParcelNL\Sdk\Tests\Unit\SendOneConsignmentTest
  */
 class SendMorningShipmentTest extends TestCase
 {

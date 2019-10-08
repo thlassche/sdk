@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace MyParcelNL\Sdk\tests\SplitStreet;
+namespace MyParcelNL\Sdk\Tests\Unit\SplitStreet;
 
 use MyParcelNL\Sdk\src\Exception\MissingFieldException;
 use MyParcelNL\Sdk\src\Factory\ConsignmentFactory;
@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class SplitStreetTest
  *
- * @package MyParcelNL\Sdk\tests\SplitStreet
+ * @package MyParcelNL\Sdk\Tests\Unit\SplitStreet
  */
 class SplitStreetTest extends TestCase
 {

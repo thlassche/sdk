@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace MyParcelNL\Sdk\tests\SendConsignments;
+namespace MyParcelNL\Sdk\Tests\Unit\SendConsignments;
 
 use MyParcelNL\Sdk\src\Exception\ApiException;
 use MyParcelNL\Sdk\src\Exception\MissingFieldException;
@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class SendUserAgentTest
  *
- * @package MyParcelNL\Sdk\src\tests\SendConsignments
+ * @package MyParcelNL\Sdk\src\tests\Unit\SendConsignments
  */
 class SendUserAgentTest extends TestCase
 {

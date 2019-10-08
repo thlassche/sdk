@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace MyParcelNL\Sdk\tests\SendConsignments;
+namespace MyParcelNL\Sdk\Tests\Unit\SendConsignments;
 
 use Exception;
 use MyParcelNL\Sdk\src\Exception\ApiException;
@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class SendAgeCheckTest
  *
- * @package MyParcelNL\Sdk\tests\SendConsignments
+ * @package MyParcelNL\Sdk\Tests\Unit\SendConsignments
  */
 class SendAgeCheckTest extends TestCase
 {

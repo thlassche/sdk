@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace MyParcelNL\Sdk\tests\ReturnLabelTest;
+namespace MyParcelNL\Sdk\Tests\Unit\ReturnLabelTest;
 
 use Exception;
 use MyParcelNL\Sdk\src\Exception\ApiException;

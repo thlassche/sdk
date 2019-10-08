@@ -1,6 +1,6 @@
 <?php
 
-namespace MyParcelNL\Sdk\tests\SendConsignments;
+namespace MyParcelNL\Sdk\Tests\Unit\SendConsignments;
 
 use Exception;
 use MyParcelNL\Sdk\src\Factory\ConsignmentFactory;
@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * Class SendOneConsignmentTest
- * @package MyParcelNL\Sdk\tests\SendOneConsignmentTest
+ * @package MyParcelNL\Sdk\Tests\Unit\SendOneConsignmentTest
  */
 class SendMultiColloConsignmentTest extends TestCase
 {

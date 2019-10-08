@@ -1,6 +1,6 @@
 <?php
 
-namespace MyParcelNL\Sdk\tests\TrackTraceUrl;
+namespace MyParcelNL\Sdk\Tests\Unit\TrackTraceUrl;
 
 use MyParcelNL\Sdk\src\Model\Consignment\PostNLConsignment;
 use PHPUnit\Framework\TestCase;
@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class TrackTraceUrlTest
  *
- * @package MyParcelNL\Sdk\tests\TrackTraceUrl
+ * @package MyParcelNL\Sdk\Tests\Unit\TrackTraceUrl
  */
 class TrackTraceUrlTest extends TestCase
 {

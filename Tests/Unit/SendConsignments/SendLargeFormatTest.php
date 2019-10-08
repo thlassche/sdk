@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace MyParcelNL\Sdk\tests\SendConsignments;
+namespace MyParcelNL\Sdk\Tests\Unit\SendConsignments;
 
 use Exception;
 use MyParcelNL\Sdk\src\Factory\ConsignmentFactory;
@@ -8,13 +8,13 @@ use MyParcelNL\Sdk\src\Helper\MyParcelCollection;
 use MyParcelNL\Sdk\src\Model\Consignment\AbstractConsignment;
 use MyParcelNL\Sdk\src\Model\Consignment\PostNLConsignment;
 use MyParcelNL\Sdk\src\Model\MyParcelCustomsItem;
-use MyParcelNL\Sdk\src\Concerns\HasDebugLabels;
+use MyParcelNL\Sdk\Tests\Concerns\HasDebugLabels;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class SendLargeFormatTest
  *
- * @package MyParcelNL\Sdk\tests\SendConsignments
+ * @package MyParcelNL\Sdk\Tests\Unit\SendConsignments
  */
 class SendLargeFormatTest extends TestCase
 {

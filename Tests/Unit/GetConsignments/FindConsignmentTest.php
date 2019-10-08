@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace MyParcelNL\Sdk\tests\GetConsignments;
+namespace MyParcelNL\Sdk\Tests\Unit\GetConsignments;
 
 use Exception;
 use MyParcelNL\Sdk\src\Helper\MyParcelCollection;
