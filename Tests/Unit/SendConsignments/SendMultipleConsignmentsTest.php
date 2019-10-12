@@ -48,6 +48,18 @@ class SendMultipleConsignmentsTest extends TestCase
             $myParcelCollection->addConsignment($consignment);
         }
 
+        $myParcelCollection->createConcepts();
+
+        $prevConsignmentId = null;
+
+        /**
+         * Check if each shipment gets a unique consignment id
+         */
+        foreach ($myParcelCollection->getConsignments() as $consignment) {
+            $this->assertNotEquals($prevConsignmentId, $consignment->getConsignmentId());
+            $prevConsignmentId = $consignment->getConsignmentId();
+        }
+
         /**
          * Get label
          */
