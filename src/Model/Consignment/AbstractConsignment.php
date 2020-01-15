@@ -1102,6 +1102,10 @@ class AbstractConsignment
      */
     public function getDeliveryDate(): ?string
     {
+        if ($this->delivery_date && strtotime($this->delivery_date) && strtotime($this->delivery_date) < time()) {
+            $datetime = new \DateTime('tomorrow');
+            return $datetime->format('Y-m-d 00:00:00');
+        }
         return $this->delivery_date;
     }
 
